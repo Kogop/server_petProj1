@@ -44,6 +44,15 @@ export default function Authenticated({
                                     Test
                                 </NavLink>
                             </div>
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                
+                                <NavLink
+                                    href={route('photo_album.upload')}
+                                    active={route().current('photo_album.upload')}
+                                >
+                                    Upload
+                                </NavLink>
+                            </div>
                         </div>
 
                         <div className="hidden sm:ms-6 sm:flex sm:items-center">
@@ -152,6 +161,12 @@ export default function Authenticated({
                             active={route().current('test')}
                         >
                             Test
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('photo_album.upload')}
+                            active={route().current('photo_album.upload')}
+                        >
+                            Upload
                         </ResponsiveNavLink>
                     </div>
 
