@@ -16,17 +16,29 @@ export default function test() {
                 </h2>
             }
         >
-            <Head title="test" />
+            <Head title="test1" />
 
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800">
                         <div className="p-6 text-gray-900 dark:text-gray-100">
-                            You're kokoko2
+                            You're kokoko3
                         </div>
+                        <Profile />
                     </div>
+                    <Profile />
                 </div>
             </div>
         </AuthenticatedLayout>
     );
 }
+
+
+function Profile() {
+    return (
+        <img
+        src="https://lk.pnzgu.ru/files/lk/photo/517671535.jpg"
+        alt="это я любимый"
+    />
+    );
+  }
