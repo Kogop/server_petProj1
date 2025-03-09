@@ -28,4 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
+Route::get('/upload_photo', function () {
+    return Inertia::render('Photo_album/Upload');
+})->middleware(['auth', 'verified'])->name('photo_album.upload');  
+
 require __DIR__.'/auth.php';
