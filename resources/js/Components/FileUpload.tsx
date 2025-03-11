@@ -3,8 +3,10 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "@headlessui/react";
+import { usePage } from "@inertiajs/react";
 
 class FileUpload extends Component {
+    // user = usePage().props.auth.user;
     state = {
         // Initially, no file is selected
         selectedFile: null
@@ -21,8 +23,7 @@ class FileUpload extends Component {
     // On file upload (click the upload button)
     onFileUpload = () => {
         // Create an object of formData
-        const formData = new FormData();
-        
+        const formData = new FormData();        
 
         // Update the formData object
         formData.append(
