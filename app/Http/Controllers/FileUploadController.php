@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-use function PHPUnit\Framework\isNull;
-
 class FileUploadController extends Controller
 {
 
@@ -28,7 +26,8 @@ class FileUploadController extends Controller
             // тут типо отправка в базу с $file->getClientOriginalName() и $path
             DB::table('user_files')->insert([
                 'user_id' => $userId,
-                'file_path' => $path
+                'user_file_name' => $file->getClientOriginalName(),
+                'file_path' => $path,
             ]);
             return response()->json(['ok' => 200,'path' => ($path ? $path : "none")]); // ['path' => $path]
         } else {
