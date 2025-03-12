@@ -4,20 +4,25 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "@headlessui/react";
 import { usePage } from "@inertiajs/react";
+interface Istate {
+    selectedFile: File | null
+}
 
 class FileUpload extends Component {
     // user = usePage().props.auth.user;
-    state = {
+    state: Istate = {
         // Initially, no file is selected
         selectedFile: null
     };
 
     // On file select (from the pop up)
-    onFileChange = (event) => {
-        // Update the state
-        this.setState({
-            selectedFile: event.target.files[0]
-        });
+    onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if(event.target.files && event.target.files.length > 0){
+            // Update the state
+            this.setState({
+                selectedFile: event.target.files[0]
+            });
+        }
     };
 
     // On file upload (click the upload button)
@@ -26,11 +31,13 @@ class FileUpload extends Component {
         const formData = new FormData();        
 
         // Update the formData object
-        formData.append(
-            "userFile",
-            this.state.selectedFile,
-            this.state.selectedFile.name
-        );
+        if (this.state.selectedFile) {
+            formData.append(
+                "userFile",
+                this.state.selectedFile,
+                this.state.selectedFile.name
+            );
+        }
 
         // Details of the uploaded file
         console.log(this.state.selectedFile);

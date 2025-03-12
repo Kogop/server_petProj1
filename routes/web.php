@@ -38,6 +38,15 @@ Route::middleware('auth')->group(function () {
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/photo_album',function () {
+        return Inertia::render('Photo_album/PhotoAlbum');
+    })->name('photo_album_show');
+    
+    // Route::post('/upload_photo', [FileUploadController::class, 'store'])->name('photo_album_upload');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
 // Route::get('/upload_photo', function () {
 //     return Inertia::render('Photo_album/Upload');
 // })->middleware(['auth', 'verified'])->name('photo_album.upload');  
