@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FileUploadController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,9 +30,28 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::middleware('auth')->group(function () {
+    Route::get('/upload_photo',function () {
+        return Inertia::render('Photo_album/Upload');
+    })->name('photo_album.upload');
+    Route::post('/upload_photo', [FileUploadController::class, 'store'])->name('photo_album_upload');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-Route::get('/upload_photo', function () {
-    return Inertia::render('Photo_album/Upload');
-})->middleware(['auth', 'verified'])->name('photo_album.upload');  
+Route::middleware('auth')->group(function () {
+    Route::get('/photo_album',function () {
+        return Inertia::render('Photo_album/PhotoAlbum');
+    })->name('photo_album_show');
+    
+    // Route::post('/upload_photo', [FileUploadController::class, 'store'])->name('photo_album_upload');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Route::get('/upload_photo', function () {
+//     return Inertia::render('Photo_album/Upload');
+// })->middleware(['auth', 'verified'])->name('photo_album.upload');  
+
+
+// Route::get('/api/upload_photo', [FileUploadController::class, 'upload'])->middleware(['auth', 'verified'])->name('api/photo_album_upload');  
 
 require __DIR__.'/auth.php';
