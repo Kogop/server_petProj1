@@ -46,17 +46,11 @@ class FileUpload extends Component {
 
         // Request made to the backend api
         // Send formData object
-        axios.post(route("photo_album_upload"), formData
-        // ,
-        // {
-        //     headers: {
-        //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content, // Include CSRF token
-        //     },
-
-        // }
-    ).then(response => {
+        axios.post(route("photo_album_upload"), formData)
+        .then(response => {
             console.log(response);
-        }).catch(error => (error.response));
+        })
+        .catch(error => (error.response));
 
         console.log("tipo otpravil");
         

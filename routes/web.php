@@ -43,9 +43,11 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('Photo_album/PhotoAlbum');
     })->name('photo_album_show');
     
-    // Route::post('/upload_photo', [FileUploadController::class, 'store'])->name('photo_album_upload');
+    Route::post('/photo_album', [FileUploadController::class, 'picture'])->name('photo_album_picture');
+    
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 // Route::get('/upload_photo', function () {
 //     return Inertia::render('Photo_album/Upload');
