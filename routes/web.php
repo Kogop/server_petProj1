@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\ImagesController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -46,6 +47,15 @@ Route::middleware('auth')->group(function () {
     // Route::post('/upload_photo', [FileUploadController::class, 'store'])->name('photo_album_upload');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('/images', [ImagesController::class, 'images'])->name('images.get');
+    
+//     // Route::post('/upload_photo', [FileUploadController::class, 'store'])->name('photo_album_upload');
+//     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+Route::get('/images', [ImagesController::class, 'images'])->name('images.get');
+Route::get('/images/{file_path}', [ImagesController::class, 'show'])->name('images.show');
 
 // Route::get('/upload_photo', function () {
 //     return Inertia::render('Photo_album/Upload');

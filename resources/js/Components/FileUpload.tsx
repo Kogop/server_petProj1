@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "@headlessui/react";
 import { usePage } from "@inertiajs/react";
+import Button2 from '@mui/material/Button';
 interface Istate {
     selectedFile: File | null
 }
@@ -97,6 +98,7 @@ class FileUpload extends Component {
                 <div>
                     <input type="file" onChange={this.onFileChange} name="filename" />
                     <Button className="rounded bg-sky-600 py-2 px-4 text-sm text-white data-[hover]:bg-sky-500 data-[active]:bg-sky-700" onClick={this.onFileUpload}>Upload!</Button>
+                    <Button2 variant="contained"  onClick={this.onFileUpload} >Upload with MUI Button!</Button2>;
                 </div>
                 {this.fileData()}
             </div>

@@ -8,13 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class FileUploadController extends Controller
 {
-
+    protected $localPath = '/mnt/local_storage/images'; // Path to your local storage
     // надо для красоты валидацию реквеста сделать
     public function store(Request $request)
     {
         
         // Check if the file exists
         if ($request->hasFile('userFile')) {
+            $request->validate([
+                'userFile' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
             $file = $request->file('userFile');
             // var_dump($file);
             $path = "";
