@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 // use Illuminate\Container\Attributes\DB;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class FileUploadController extends Controller
 {
@@ -23,7 +24,8 @@ class FileUploadController extends Controller
             $path = "";
             $userId = Auth::id();
             // Process the file (e.g., store it)
-            $path = $file->storePublicly('userFiles'); // Stores in storage/app/public/photos
+            $path = Storage::disk('public')->putFile('userFiles', $file);
+            // $path = $file->storePublicly('userFiles'); // Stores in storage/app/public/photos
             // точно, я же могу вот этот path который возвращает сохранка сохранять в базу к файлу и заебись будет
 
             // тут типо отправка в базу с $file->getClientOriginalName() и $path

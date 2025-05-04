@@ -27,22 +27,22 @@ export default function PhotoAlbumComponent() {
     
         fetchImages();
       }, []);
-
+    //   sx={{ width: 500, height: 450 }}
       return (
         <>
-        <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+        <ImageList sx={{ width: 1000, height: 450 }}  cols={3} rowHeight={164}>
             {images.map((item) => (
                 <ImageListItem key={item}>
                 <img
-                    srcSet={`${item.filepath}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                    src={`${item.filepath}?w=164&h=164&fit=crop&auto=format`}
+                    srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                    src={`${item}?w=164&h=164&fit=crop&auto=format`}
                     alt={item}
                     loading="lazy"
                 />
                 </ImageListItem>
             ))}
         </ImageList>
-        <Grid container spacing={2}>
+        {/* <Grid container spacing={2}>
         {images.map((imageUrl, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card>
@@ -58,7 +58,7 @@ export default function PhotoAlbumComponent() {
             </Card>
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
       </>
     );
     // return (

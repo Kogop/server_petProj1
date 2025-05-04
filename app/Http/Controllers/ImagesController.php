@@ -30,14 +30,15 @@ class ImagesController extends Controller {
             $images = DB::table('user_files')->where('user_id', $userId)->get();
             foreach ($images as $key => $value) {
                 // return $value->file_path;  // explode("/", $value->file_path)[1]
-                if (Storage::disk('local')->exists($value->file_path)) {
+                if (Storage::disk('public')->exists($value->file_path)) {
                     // return "jop";
                     // return response(Storage::disk('local')->get($value->file_path), 200);
 
-                    $imageUrls[] = [
-                        "filepath" => route('images.show', ['file_path' => explode("/",$value->file_path)[1]]), // File::get(
-                        // "type" => File::mimeType(Storage::disk('local')->$value->file_path), 
-                    ];
+                    // $imageUrls[] = [
+                    //     "filepath" => route('images.show', ['file_path' => explode("/",$value->file_path)[1]]), // File::get(
+                    //     // "type" => File::mimeType(Storage::disk('local')->$value->file_path), 
+                    // ];
+                    $imageUrls[] = asset('storage/' . $value->file_path);  // php artisan storage:link  вот эту хуйню прописать чтобы работало
                 }
             }
             
