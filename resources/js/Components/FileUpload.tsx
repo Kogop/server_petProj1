@@ -47,19 +47,13 @@ class FileUpload extends Component {
 
         // Request made to the backend api
         // Send formData object
-        axios.post(route("photo_album_upload"), formData
-        // ,
-        // {
-        //     headers: {
-        //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content, // Include CSRF token
-        //     },
-
-        // }
-    ).then(response => {
+        axios.post(route("photo_album_upload"), formData)
+        .then(response => {
+        
             console.log(response);
-        }).catch(error => (error.response));
+        })
+        .catch(error => (error.response));
 
-        console.log("tipo otpravil");
         
     };
 
@@ -98,7 +92,7 @@ class FileUpload extends Component {
                 <div>
                     <input type="file" onChange={this.onFileChange} name="filename" />
                     <Button className="rounded bg-sky-600 py-2 px-4 text-sm text-white data-[hover]:bg-sky-500 data-[active]:bg-sky-700" onClick={this.onFileUpload}>Upload!</Button>
-                    <Button2 variant="contained"  onClick={this.onFileUpload} >Upload with MUI Button!</Button2>;
+                    <Button2 variant="contained"  onClick={this.onFileUpload} >Upload with MUI Button!</Button2>
                 </div>
                 {this.fileData()}
             </div>

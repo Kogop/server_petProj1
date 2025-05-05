@@ -16,12 +16,12 @@ class ImagesController extends Controller {
     {
         
         // Check if the file exists
-        if (Auth::id() || 1) {
+        if (Auth::id() ) { // || 1
             // $file = $request->file('userFile');
             // var_dump($file);
             $path = "";
             $userId = Auth::id();
-            $userId = 1;
+            // $userId = 1;
             // Process the file (e.g., store it)
             // $path = $file->storePublicly('userFiles'); // Stores in storage/app/public/photos
             // точно, я же могу вот этот path который возвращает сохранка сохранять в базу к файлу и заебись будет
@@ -55,21 +55,21 @@ class ImagesController extends Controller {
         
     }
 
-    public function show($file_path)
-    {
-        $filePath = $this->localPath . '\\' . $file_path;
+    // public function show($file_path)
+    // {
+    //     $filePath = $this->localPath . '\\' . $file_path;
 
-        var_dump($filePath);
-        if (Storage::disk('local')->exists($filePath)) {
-            abort(404);
-        }
+    //     var_dump($filePath);
+    //     if (Storage::disk('local')->exists($filePath)) {
+    //         abort(404);
+    //     }
 
-        $file = Storage::disk('local')->get($filePath);
-        $type = Storage::disk('local')->mimeType($filePath);
-        var_dump($type);
+    //     $file = Storage::disk('local')->get($filePath);
+    //     $type = Storage::disk('local')->mimeType($filePath);
+    //     var_dump($type);
 
-        return response($file, 200)->header('Content-Type', $type);
-    }
+    //     return response($file, 200)->header('Content-Type', $type);
+    // }
 
 
 
